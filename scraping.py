@@ -31,8 +31,8 @@ def get_driver(headless=False):
 
 def save_pages(pages):
     os.makedirs("data", exist_ok=True)
-    for page_nb, page in enumerate(pages):
-        with open(f"Python/data/page_{page_nb}.html", "wb") as f_out:
+    for page in pages:
+        with open(f"data/page.html", "wb") as f_out:
             f_out.write(page)
 
 
@@ -98,7 +98,8 @@ def main():
     save_pages(pages)
     results = parse_pages()
     print(results)
-    results.to_csv(r'datas/pandas.txt', header=None, index=None)
+    os.makedirs("datas", exist_ok=True)
+    results.to_csv(r'datas/raspberry_infos.txt', header=None, index=None)
 
 
 if __name__ == "__main__":
